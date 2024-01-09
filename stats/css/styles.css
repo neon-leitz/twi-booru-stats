@@ -1,0 +1,40 @@
+:root {
+  --header-height: 4rem;
+}
+
+html,
+body {
+  background: #282E5A;
+  height: 100%;
+}
+
+nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background: #363E79;
+  height: var(--header-height);
+  font-size: 1.25rem;
+  font-family: monospace;
+}
+
+nav a {
+  color: #F7A71B;
+  text-decoration: none;
+  display: block;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main.charts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  height: calc(96% - var(--header-height));
+}
