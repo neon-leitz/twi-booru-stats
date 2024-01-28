@@ -16,38 +16,51 @@
 
   <body>
     <nav>
-      <a href="/twi-booru-stats/stats/uploads">Uploads</a>
+      <a href="/twi-booru-stats/stats/uploads.html">Uploads</a>
       <a href="/twi-booru-stats/stats/characters.html">Characters</a>
       <a href="/twi-booru-stats/stats/artists.html">Artists</a>
       <a href="/twi-booru-stats/stats/books.html">Books</a>
       <a href="/twi-booru-stats/stats/volumes.html">Volumes</a>
     </nav>
-    <main id="chart"></main>
+    <main id="chart">
+    </main>
   </body>
 </html>
 
 <script type="text/javascript" src="js/default_config.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="module">
-  let artist_tags = await fetch_json_data("data/artist_tags.json");
-
-  let data = {
-    y: Object.values(artist_tags["tag"]).slice(0, 25).reverse(),
-    x: Object.values(artist_tags["uses"]).slice(0, 25).reverse(),
+  let posts_by_day = await fetch_json_data("data/posts_per_day.json")
+  let posts_by_day_cumulative = await fetch_json_data("data/posts_per_day_cumulative.json")
+  let base_counts = {
+    x: Object.keys(posts_by_day).slice(1),
+    y: Object.values(posts_by_day).slice(1),
     marker: {
-      color: default_bar_colors,
+      color: "#56D481",
     },
-    type: "bar",
-    orientation: "h",
+    name: "Upload count",
+    type: "scatter",
   }
-  data = [data];
+
+  let cumulative_counts = {
+    x: Object.keys(posts_by_day_cumulative),
+    y: Object.values(posts_by_day_cumulative),
+    marker: {
+      color: "#4C7EE1",
+    },
+    fill: "tozeroy",
+    name: "Total upload count",
+    type: "scatter",
+    showlegend: true,
+  }
+
+  let data = [base_counts, cumulative_counts];
 
   let layout = default_layout;
-  layout["title"]["text"] = "Artist Tags"
+  layout["showlegend"] = true;
 
   Plotly.newPlot("chart", data, layout, {
     displaylogo: false,
-    displayModeBar: true,
     responsive: true,
   });
 </script>

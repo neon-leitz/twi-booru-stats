@@ -94,7 +94,29 @@ if __name__ == "__main__":
 
     # Posts
     posts = asyncio.run(get_posts_data())
-    save_data_to_json(data_path, "posts.json", posts)
+    # save_data_to_json(data_path, "posts.json", posts)
+
+    posts_df = pd.DataFrame(posts["posts"])
+    posts_df["posted"] = pd.to_datetime(posts_df["posted"], format="mixed")
+
+    # Posts by day
+    day_grouper = pd.Grouper(key="posted", freq="D")
+    posts_per_day = posts_df.groupby(day_grouper)["post_id"].count()
+    posts_per_day_cumulative = posts_per_day.cumsum()
+    posts_per_day.to_json(Path(data_path, "posts_per_day.json"), date_format="iso")
+    posts_per_day_cumulative.to_json(
+        Path(data_path, "posts_per_day_cumulative.json"), date_format="iso"
+    )
+
+    # Posts by month
+    month_grouper = pd.Grouper(key="posted", freq="ME")
+    posts_per_month = posts_df.groupby(month_grouper)["post_id"].count()
+    posts_per_month_cumulative = posts_per_month.cumsum()
+    posts_per_month.to_json(Path(data_path, "posts_per_month.json"), date_format="iso")
+    posts_per_month_cumulative.to_json(
+        Path(data_path, "posts_per_month_cumulative.json"), date_format="iso"
+    )
+
     print(f"> Posts data saved to {data_path}")
 
     # Tags
