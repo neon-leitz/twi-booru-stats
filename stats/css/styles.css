@@ -1,5 +1,8 @@
 :root {
   --header-height: 4rem;
+  --bg-1: #363E79;
+  --text-1: #F7A71B;
+  --text-2: #D25041;
 }
 
 html,
@@ -15,14 +18,14 @@ nav {
   justify-content: center;
   padding-left: 1rem;
   padding-right: 1rem;
-  background: #363E79;
+  background: var(--bg-1);
   height: var(--header-height);
   font-size: 1.25rem;
   font-family: monospace;
 }
 
 nav a {
-  color: #F7A71B;
+  color: var(--text-1);
   text-decoration: none;
   display: block;
 }
@@ -31,10 +34,76 @@ nav a:hover {
   text-decoration: underline;
 }
 
+.heading, main {
+  font-family: "Sixtyfour", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "BLED" 0,
+    "SCAN" -12;
+  text-align: center;
+}
+
 main {
+  color: var(--text-1);
   display: flex;
   flex-direction: column;
+  font-size: 1.75rem;
   gap: 1rem;
   height: calc(100% - var(--header-height));
   width: 100%;
+  overflow: auto;
+}
+
+main a:link {
+  color: red;
+}
+
+main a:active {
+  color: red;
+  filter: brightness(0.5);
+}
+
+main a:visited {
+  color: yellow;
+}
+
+.heading {
+  color: var(--text-2);
+  font-size: 5rem;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+.favicon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--header-height);
+  display: flex;
+  margin-left: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.favicon img {
+  width: 2.5rem;
+  height: 2.5rem;
+  vertical-align: middle;
+}
+
+.container {
+  padding: 1rem 5rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 2.75rem;
+  gap: 3rem;
+}
+
+@media screen and (max-width: 900px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+  }
 }
