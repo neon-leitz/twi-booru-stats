@@ -14,3 +14,14 @@ highlight_code = false
 
 [extra]
 # Put all your custom variables here
+navbar_items = [
+    { code = "en", nav_items = [
+        { url = "$BASE_URL/", name = "Home" },
+        { url = "$BASE_URL/charts/uploads", name = "Uploads" },
+        { url = "$BASE_URL/charts/characters", name = "Characters" },
+        { url = "$BASE_URL/charts/artists", name = "Artists" },
+        { url = "$BASE_URL/charts/books", name = "Books" },
+        { url = "$BASE_URL/charts/volumes", name = "Volumes" },
+    ] },
+]
+
