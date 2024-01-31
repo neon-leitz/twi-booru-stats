@@ -1,4 +1,4 @@
-let default_layout = {
+export let default_layout = {
   barmode: "group",
   colorscale: "diverging",
   paper_bgcolor: "#282E5A",
@@ -27,7 +27,7 @@ let default_layout = {
 };
 
 
-let default_bar_colors = [
+export let default_bar_colors = [
   'rgb(254.0, 61.0, 49.0)',
   'rgb(247.9655172413793, 67.65517241379311, 48.96551724137931)',
   'rgb(241.93103448275863, 74.3103448275862, 48.93103448275862)',
@@ -60,7 +60,7 @@ let default_bar_colors = [
   'rgb(79.0, 254.0, 48.0)',
 ];
 
-let default_bar_colors_medium = [
+export let default_bar_colors_medium = [
   'rgb(254.0, 61.0, 49.0)',
   'rgb(244.78947368421052, 71.15789473684211, 48.94736842105263)',
   'rgb(235.57894736842104, 81.3157894736842, 48.89473684210526)',
@@ -83,7 +83,7 @@ let default_bar_colors_medium = [
   'rgb(79.0, 253.99999999999997, 48.0)',
 ];
 
-let default_bar_colors_short = [
+export let default_bar_colors_short = [
   'rgb(254.0, 61.0, 49.0)',
   'rgb(238.0909090909091, 78.54545454545455, 48.90909090909091)',
   'rgb(222.1818181818182, 96.0909090909091, 48.81818181818182)',
@@ -97,3 +97,4 @@ let default_bar_colors_short = [
   'rgb(94.9090909090909, 236.45454545454547, 48.09090909090909)',
   'rgb(79.0, 254.0, 48.0)',
 ];
+
