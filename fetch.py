@@ -90,11 +90,10 @@ def get_posts_data():
 
 
 if __name__ == "__main__":
-    data_path = Path("stats/data")
+    data_path = Path("stats/static/js/data")
 
     # Posts
     posts = asyncio.run(get_posts_data())
-    # save_data_to_json(data_path, "posts.json", posts)
 
     posts_df = pd.DataFrame(posts["posts"])
     posts_df["posted"] = pd.to_datetime(posts_df["posted"], format="mixed")
@@ -103,18 +102,22 @@ if __name__ == "__main__":
     day_grouper = pd.Grouper(key="posted", freq="D")
     posts_per_day = posts_df.groupby(day_grouper)["post_id"].count()
     posts_per_day_cumulative = posts_per_day.cumsum()
-    posts_per_day.to_json(Path(data_path, "posts_per_day.json"), date_format="iso")
+    posts_per_day.to_json(
+        Path(data_path, "posts_per_day.json"), date_format="iso", indent=2
+    )
     posts_per_day_cumulative.to_json(
-        Path(data_path, "posts_per_day_cumulative.json"), date_format="iso"
+        Path(data_path, "posts_per_day_cumulative.json"), date_format="iso", indent=2
     )
 
     # Posts by month
     month_grouper = pd.Grouper(key="posted", freq="ME")
     posts_per_month = posts_df.groupby(month_grouper)["post_id"].count()
     posts_per_month_cumulative = posts_per_month.cumsum()
-    posts_per_month.to_json(Path(data_path, "posts_per_month.json"), date_format="iso")
+    posts_per_month.to_json(
+        Path(data_path, "posts_per_month.json"), date_format="iso", indent=2
+    )
     posts_per_month_cumulative.to_json(
-        Path(data_path, "posts_per_month_cumulative.json"), date_format="iso"
+        Path(data_path, "posts_per_month_cumulative.json"), date_format="iso", indent=2
     )
 
     print(f"> Posts data saved to {data_path}")
@@ -124,22 +127,22 @@ if __name__ == "__main__":
 
     # Artist tags
     artist_tags = tags.query("tag.str.startswith('artist:') & uses > 10")
-    artist_tags.to_json(Path(data_path, "artist_tags.json"))
+    artist_tags.to_json(Path(data_path, "artist_tags.json"), indent=2)
     print(f"> Artist tag data saved to {data_path}")
 
     # Character tags
     character_tags = tags.query("tag.str.startswith('character:') & uses > 10")
-    character_tags.to_json(Path(data_path, "character_tags.json"))
+    character_tags.to_json(Path(data_path, "character_tags.json"), indent=2)
     print(f"> Character tag data saved to {data_path}")
 
     # Book tags
     book_tags = tags.query("tag.str.startswith('spoiler:book')")
-    book_tags.to_json(Path(data_path, "book_tags.json"))
+    book_tags.to_json(Path(data_path, "book_tags.json"), indent=2)
     print(f"> Book tag data saved to {data_path}")
 
     # Volume tags
     volume_tags = tags.query(
         "tag.str.startswith('spoiler:volum') or tag == 'spoiler:book1' or tag == 'spoiler:book2'"
     )
-    volume_tags.to_json(Path(data_path, "volume_tags.json"))
+    volume_tags.to_json(Path(data_path, "volume_tags.json"), indent=2)
     print(f"> Volume tag data saved to {data_path}")
