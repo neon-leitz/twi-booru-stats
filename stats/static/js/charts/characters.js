@@ -1,6 +1,5 @@
 import * as Config from "../default_config.js"
-import { fetch_json_data } from "../utils.js"
-let character_tags = await fetch_json_data("../data/character_tags.json");
+import character_tags from "../data/character_tags.json" assert {type: "json"};
 
 let data = {
   y: Object.values(character_tags["tag"]).slice(0, 25).reverse(),
