@@ -1,7 +1,7 @@
 import * as Config from "../default_config.js"
 import { fetch_json_data } from "../utils.js"
-let posts_by_day = await fetch_json_data("/data/posts_per_day.json")
-let posts_by_day_cumulative = await fetch_json_data("/data/posts_per_day_cumulative.json")
+let posts_by_day = await fetch_json_data("../data/posts_per_day.json")
+let posts_by_day_cumulative = await fetch_json_data("../data/posts_per_day_cumulative.json")
 let base_counts = {
   x: Object.keys(posts_by_day).slice(1),
   y: Object.values(posts_by_day).slice(1),

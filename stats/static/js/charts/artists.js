@@ -1,6 +1,6 @@
 import * as Config from "../default_config.js"
 import { fetch_json_data } from "../utils.js"
-let artist_tags = await fetch_json_data("/data/artist_tags.json");
+let artist_tags = await fetch_json_data("../data/artist_tags.json");
 
 let data = {
   y: Object.values(artist_tags["tag"]).slice(0, 25).reverse(),
