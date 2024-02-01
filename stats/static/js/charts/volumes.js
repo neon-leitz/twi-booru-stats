@@ -2,8 +2,8 @@ import * as Config from "../default_config.js"
 import volume_tags from "../data/volume_tags.json" assert {type: "json"};
 
 let data = {
-  y: Object.values(volume_tags["tag"]).slice(0, 25).reverse(),
-  x: Object.values(volume_tags["uses"]).slice(0, 25).reverse(),
+  y: Object.keys(volume_tags["uses"]).reverse(),
+  x: Object.values(volume_tags["uses"]).reverse(),
   marker: {
     color: Config.default_bar_colors_short,
   },

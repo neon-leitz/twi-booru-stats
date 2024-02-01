@@ -2,8 +2,8 @@ import * as Config from "../default_config.js"
 import character_tags from "../data/character_tags.json" assert {type: "json"};
 
 let data = {
-  y: Object.values(character_tags["tag"]).slice(0, 25).reverse(),
-  x: Object.values(character_tags["uses"]).slice(0, 25).reverse(),
+  x: Object.values(character_tags["uses"]).slice(0, 30).reverse(),
+  y: Object.keys(character_tags["uses"]).slice(0, 30).reverse(),
   marker: {
     color: Config.default_bar_colors,
   },

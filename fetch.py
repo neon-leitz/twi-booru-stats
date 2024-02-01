@@ -6,21 +6,10 @@ import asyncio
 # Pandas
 import pandas as pd
 
-
-# # Plotly
-# from plotly.offline import iplot, init_notebook_mode
-# import plotly.express as px
-# import plotly.io as pio
-# init_notebook_mode(connected=True)
-
 # Stdlib
 from pathlib import Path
 import string
 import json
-
-# # Plotly config
-# pio.templates.default = "ggplot2"
-# PX_DEFAULT_HEIGHT = 800
 
 # Select your transport with a defined url endpoint
 transport = AIOHTTPTransport(url="https://fanworks.wanderinginn.com/graphql")
@@ -89,6 +78,16 @@ def get_posts_data():
     return client.execute_async(posts_query)
 
 
+def get_post_counts_per_day(posts_df: pd.DataFrame):
+    day_grouper = pd.Grouper(key="posted", freq="D")
+    return posts_df.groupby(day_grouper)["post_id"].count()
+
+
+def get_post_counts_per_month(posts_df: pd.DataFrame):
+    month_grouper = pd.Grouper(key="posted", freq="ME")
+    return posts_df.groupby(month_grouper)["post_id"].count()
+
+
 if __name__ == "__main__":
     data_path = Path("stats/static/js/data")
 
@@ -98,9 +97,8 @@ if __name__ == "__main__":
     posts_df = pd.DataFrame(posts["posts"])
     posts_df["posted"] = pd.to_datetime(posts_df["posted"], format="mixed")
 
-    # Posts by day
-    day_grouper = pd.Grouper(key="posted", freq="D")
-    posts_per_day = posts_df.groupby(day_grouper)["post_id"].count()
+    # Posts per day
+    posts_per_day = get_post_counts_per_day(posts_df)
     posts_per_day_cumulative = posts_per_day.cumsum()
     posts_per_day.to_json(
         Path(data_path, "posts_per_day.json"), date_format="iso", indent=2
@@ -110,8 +108,7 @@ if __name__ == "__main__":
     )
 
     # Posts by month
-    month_grouper = pd.Grouper(key="posted", freq="ME")
-    posts_per_month = posts_df.groupby(month_grouper)["post_id"].count()
+    posts_per_month = get_post_counts_per_month(posts_df)
     posts_per_month_cumulative = posts_per_month.cumsum()
     posts_per_month.to_json(
         Path(data_path, "posts_per_month.json"), date_format="iso", indent=2
@@ -120,29 +117,37 @@ if __name__ == "__main__":
         Path(data_path, "posts_per_month_cumulative.json"), date_format="iso", indent=2
     )
 
-    print(f"> Posts data saved to {data_path}")
+    print(f"> Post data saved to {data_path}")
 
     # Tags
     tags = pd.DataFrame(asyncio.run(get_all_tag_data()))
 
     # Artist tags
-    artist_tags = tags.query("tag.str.startswith('artist:') & uses > 10")
-    artist_tags.to_json(Path(data_path, "artist_tags.json"), indent=2)
+    artist_tags = tags.query("tag.str.startswith('artist:')")
+    artist_tags.sort_values("uses", ascending=False).set_index("tag").to_json(
+        Path(data_path, "artist_tags.json"), indent=2
+    )
     print(f"> Artist tag data saved to {data_path}")
 
     # Character tags
-    character_tags = tags.query("tag.str.startswith('character:') & uses > 10")
-    character_tags.to_json(Path(data_path, "character_tags.json"), indent=2)
+    character_tags = tags.query("tag.str.startswith('character:')")
+    character_tags.sort_values("uses", ascending=False).set_index("tag").to_json(
+        Path(data_path, "character_tags.json"), indent=2
+    )
     print(f"> Character tag data saved to {data_path}")
 
     # Book tags
     book_tags = tags.query("tag.str.startswith('spoiler:book')")
-    book_tags.to_json(Path(data_path, "book_tags.json"), indent=2)
+    book_tags.sort_values("uses", ascending=False).set_index("tag").to_json(
+        Path(data_path, "book_tags.json"), indent=2
+    )
     print(f"> Book tag data saved to {data_path}")
 
     # Volume tags
     volume_tags = tags.query(
         "tag.str.startswith('spoiler:volum') or tag == 'spoiler:book1' or tag == 'spoiler:book2'"
     )
-    volume_tags.to_json(Path(data_path, "volume_tags.json"), indent=2)
+    volume_tags.sort_values("uses", ascending=False).set_index("tag").to_json(
+        Path(data_path, "volume_tags.json"), indent=2
+    )
     print(f"> Volume tag data saved to {data_path}")

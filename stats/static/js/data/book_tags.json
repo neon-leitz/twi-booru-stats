@@ -1,34 +1,18 @@
 {
-  "tag":{
-    "2718":"spoiler:book1",
-    "2725":"spoiler:book2",
-    "2736":"spoiler:book5",
-    "2739":"spoiler:book10",
-    "2740":"spoiler:book3",
-    "2745":"spoiler:book12",
-    "2747":"spoiler:book8",
-    "2750":"spoiler:book4",
-    "2752":"spoiler:book14",
-    "2758":"spoiler:book9",
-    "2760":"spoiler:book6",
-    "2761":"spoiler:book11",
-    "2765":"spoiler:book7",
-    "2769":"spoiler:book13"
-  },
   "uses":{
-    "2718":680,
-    "2725":371,
-    "2736":215,
-    "2739":177,
-    "2740":159,
-    "2745":100,
-    "2747":92,
-    "2750":81,
-    "2752":76,
-    "2758":52,
-    "2760":51,
-    "2761":50,
-    "2765":46,
-    "2769":37
+    "spoiler:book1":680,
+    "spoiler:book2":371,
+    "spoiler:book5":215,
+    "spoiler:book10":177,
+    "spoiler:book3":159,
+    "spoiler:book12":100,
+    "spoiler:book8":92,
+    "spoiler:book4":81,
+    "spoiler:book14":76,
+    "spoiler:book9":52,
+    "spoiler:book6":51,
+    "spoiler:book11":50,
+    "spoiler:book7":46,
+    "spoiler:book13":37
   }
 }
