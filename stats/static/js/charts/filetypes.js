@@ -9,10 +9,10 @@ let data = {
   },
   text: Object.values(post_filetypes),
   textfont: {
-    family: "Cambria, sans",
+    family: "Courier New, monospace",
     size: 24,
-
   },
+  texttemplate: " <b>%{value}</b> ",
   type: "bar",
   orientation: "h",
 }

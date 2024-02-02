@@ -2,11 +2,16 @@ import * as Config from "../default_config.js"
 import artist_tags from "../data/artist_tags.json" assert {type: "json"};
 
 let data = {
-  y: Object.keys(artist_tags["uses"]).slice(0, 30).reverse(),
-  x: Object.values(artist_tags["uses"]).slice(0, 30).reverse(),
+  y: Object.keys(artist_tags["uses"]).slice(0, 25).reverse(),
+  x: Object.values(artist_tags["uses"]).slice(0, 25).reverse(),
   marker: {
     color: Config.default_bar_colors,
   },
+  textfont: {
+    family: "Courier New, monospace",
+    size: 24,
+  },
+  texttemplate: " <b>%{value}</b> ",
   type: "bar",
   orientation: "h",
 }

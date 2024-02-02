@@ -7,6 +7,8 @@ let base_counts = {
   marker: {
     color: "#56D481",
   },
+  hovertemplate: "Date: %{x}<br>" +
+                 "Uploads: %{y}",
   name: "Upload count",
   type: "scatter",
 }
@@ -17,6 +19,8 @@ let cumulative_counts = {
   marker: {
     color: "#4C7EE1",
   },
+  hovertemplate: "Date: %{x}<br>" +
+                 "Total Uploads: %{y}",
   fill: "tozeroy",
   name: "Total upload count",
   type: "scatter",

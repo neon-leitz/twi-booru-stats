@@ -125,7 +125,13 @@ if __name__ == "__main__":
     posts_df.groupby("ext")["ext"].count().sort_values(ascending=True).to_json(
         Path(data_path, "post_filetypes.json"), indent=2
     )
-    print(f"> Post data saved to {data_path}")
+    print(f"> Post filetype data saved to {data_path}")
+
+    # Post filesize data
+    posts_df["filesize"].to_json(
+        Path(data_path, "post_filesizes.json"), orient="values", indent=2
+    )
+    print(f"> Post filesize data saved to {data_path}")
 
     # Tags
     tags = pd.DataFrame(asyncio.run(get_all_tag_data()))

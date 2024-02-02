@@ -7,6 +7,11 @@ let data = {
   marker: {
     color: Config.default_bar_colors_short,
   },
+  textfont: {
+    family: "Courier New, monospace",
+    size: 24,
+  },
+  texttemplate: " <b>%{value}</b> ",
   type: "bar",
   orientation: "h",
 }
