@@ -22,6 +22,7 @@ navbar_items = [
         { url = "$BASE_URL/charts/artists", name = "Artists" },
         { url = "$BASE_URL/charts/books", name = "Books" },
         { url = "$BASE_URL/charts/volumes", name = "Volumes" },
+        { url = "$BASE_URL/charts/filetypes", name = "Filetypes" },
     ] },
 ]
 

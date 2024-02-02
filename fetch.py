@@ -103,9 +103,11 @@ if __name__ == "__main__":
     posts_per_day.to_json(
         Path(data_path, "posts_per_day.json"), date_format="iso", indent=2
     )
+    print(f"> Posts per day data saved to {data_path}")
     posts_per_day_cumulative.to_json(
         Path(data_path, "posts_per_day_cumulative.json"), date_format="iso", indent=2
     )
+    print(f"> Posts per day (cumulative) data saved to {data_path}")
 
     # Posts by month
     posts_per_month = get_post_counts_per_month(posts_df)
@@ -113,10 +115,16 @@ if __name__ == "__main__":
     posts_per_month.to_json(
         Path(data_path, "posts_per_month.json"), date_format="iso", indent=2
     )
+    print(f"> Posts per month data saved to {data_path}")
     posts_per_month_cumulative.to_json(
         Path(data_path, "posts_per_month_cumulative.json"), date_format="iso", indent=2
     )
+    print(f"> Posts per month (cumulative) data saved to {data_path}")
 
+    # Post filetype distribution
+    posts_df.groupby("ext")["ext"].count().sort_values(ascending=True).to_json(
+        Path(data_path, "post_filetypes.json"), indent=2
+    )
     print(f"> Post data saved to {data_path}")
 
     # Tags
