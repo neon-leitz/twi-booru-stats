@@ -25,6 +25,9 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root
       - name: Fetch data
+        env:
+          BOORU_BOT_USER: ${{ secrets.BOORU_BOT_USER }}
+          BOORU_BOT_PASS: ${{ secrets.BOORU_BOT_PASS }}
         run: |
           poetry run python fetch.py
       - name: Make pull request

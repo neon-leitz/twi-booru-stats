@@ -2,6 +2,7 @@
 from gql import gql, Client
 from gql.transport.aiohttp import AIOHTTPTransport
 import asyncio
+from os import environ as env
 
 # Pandas
 import pandas as pd
@@ -11,11 +12,26 @@ from pathlib import Path
 import string
 import json
 
-# Select your transport with a defined url endpoint
-transport = AIOHTTPTransport(url="https://fanworks.wanderinginn.com/graphql")
+ENV_BOT_USER = "BOORU_BOT_USER"
+ENV_BOT_PASS = "BOORU_BOT_PASS"
 
-# Create a GraphQL client using the defined transport
-client = Client(transport=transport, fetch_schema_from_transport=True)
+
+def get_bot_session(client: Client):
+    session_query = gql(
+        """
+        mutation BotLogin {{
+          login(username: "{user}", password: "{password}") {{
+            session,
+            error
+          }}
+        }}
+        """.format(
+            user=env.get(ENV_BOT_USER, ""),
+            password=env.get(ENV_BOT_PASS, ""),
+        )
+    )
+
+    return client.execute_async(session_query)
 
 
 def save_data_to_json(path: Path, filename: str, data: dict):
@@ -24,7 +40,7 @@ def save_data_to_json(path: Path, filename: str, data: dict):
         f.write(json.dumps(data))
 
 
-async def get_all_tag_data():
+async def get_all_tag_data(client: Client):
     first_chars = string.ascii_lowercase + string.digits
     tag_data = []
     for c in first_chars:
@@ -52,11 +68,11 @@ async def get_all_tag_data():
     return tag_data
 
 
-def get_posts_data():
+def get_posts_data(client: Client):
     posts_query = gql(
         """
         query GetPosts {
-            posts(limit: 10000, offset: 0) {
+            posts(limit: 50000, offset: 0) {
               post_id,
               posted,
               image_link,
@@ -89,10 +105,40 @@ def get_post_counts_per_month(posts_df: pd.DataFrame):
 
 
 if __name__ == "__main__":
+    try:
+        env.get(ENV_BOT_USER)
+        env.get(ENV_BOT_PASS)
+    except KeyError:
+        print(
+            f"Both {ENV_BOT_USER} and {ENV_BOT_PASS} environment variables must be set."
+        )
+        exit(1)
+
+    # Select your transport with a defined url endpoint
+    transport = AIOHTTPTransport(url="https://fanworks.wanderinginn.com/graphql")
+
+    # Create a GraphQL client using the defined transport
+    client = Client(transport=transport, fetch_schema_from_transport=True)
+
+    try:
+        session = asyncio.run(get_bot_session(client))
+        # print(session)
+        session_key = session.get("login").get("session")
+    except KeyError:
+        print(f"Could not retrieve session key for user {env.get(ENV_BOT_USER)}")
+        exit(1)
+
+    transport.cookies = {
+        "shm_session": session_key,
+        "shm_user": env.get(ENV_BOT_USER),
+    }
+
+    client = Client(transport=transport, fetch_schema_from_transport=True)
+
     data_path = Path("stats/static/js/data")
 
     # Posts
-    posts = asyncio.run(get_posts_data())
+    posts = asyncio.run(get_posts_data(client))
 
     posts_df = pd.DataFrame(posts["posts"])
     posts_df["posted"] = pd.to_datetime(posts_df["posted"], format="mixed")
@@ -134,7 +180,7 @@ if __name__ == "__main__":
     print(f"> Post filesize data saved to {data_path}")
 
     # Tags
-    tags = pd.DataFrame(asyncio.run(get_all_tag_data()))
+    tags = pd.DataFrame(asyncio.run(get_all_tag_data(client)))
 
     # Artist tags
     artist_tags = tags.query("tag.str.startswith('artist:')")
