@@ -73,18 +73,21 @@ def get_posts_data(client: Client):
         """
         query GetPosts {
             posts(limit: 50000, offset: 0) {
-              post_id,
-              posted,
-              image_link,
-              mime,
-              ext,
-              info,
-              locked,
-              height,
-              width,
-              filesize,
-              source,
-              tags,
+                post_id,
+                posted,
+                image_link,
+                mime,
+                ext,
+                info,
+                locked,
+                owner {
+                    name
+                }
+                height,
+                width,
+                filesize,
+                source,
+                tags,
             }
         }
         """
@@ -121,8 +124,8 @@ if __name__ == "__main__":
     client = Client(transport=transport, fetch_schema_from_transport=True)
 
     try:
+        print("Retrieving session key...", flush=True)
         session = asyncio.run(get_bot_session(client))
-        # print(session)
         session_key = session.get("login").get("session")
     except KeyError:
         print(f"Could not retrieve session key for user {env.get(ENV_BOT_USER)}")
@@ -134,7 +137,6 @@ if __name__ == "__main__":
     }
 
     client = Client(transport=transport, fetch_schema_from_transport=True)
-
     data_path = Path("stats/static/js/data")
 
     # Posts
@@ -178,6 +180,13 @@ if __name__ == "__main__":
         Path(data_path, "post_filesizes.json"), orient="values", indent=2
     )
     print(f"> Post filesize data saved to {data_path}")
+
+    # Post uploader counts
+    posts_df["uploader"] = posts_df["owner"].apply(lambda x: pd.Series(x["name"]))
+    posts_df.groupby("uploader")["uploader"].count().sort_values(
+        ascending=False
+    ).to_json(Path(data_path, "post_uploader_counts.json"), indent=2)
+    print(f"> Post uploader counts data saved to {data_path}")
 
     # Tags
     tags = pd.DataFrame(asyncio.run(get_all_tag_data(client)))
