@@ -127,15 +127,27 @@ if __name__ == "__main__":
         print("Retrieving session key...", flush=True)
         session = asyncio.run(get_bot_session(client))
         session_key = session.get("login").get("session")
+        if session_key is None:
+            print(
+                'The user could not be found. Error: "{}"'.format(
+                    session.get("login").get("error")
+                )
+            )
+            exit(1)
     except KeyError:
         print(f"Could not retrieve session key for user {env.get(ENV_BOT_USER)}")
         exit(1)
+    except Exception as e:
+        print(f'An error occurred: "{e}"')
 
-    transport.cookies = {
+    cookies = {
         "shm_session": session_key,
         "shm_user": env.get(ENV_BOT_USER),
     }
 
+    transport = AIOHTTPTransport(
+        url="https://fanworks.wanderinginn.com/graphql", cookies=cookies
+    )
     client = Client(transport=transport, fetch_schema_from_transport=True)
     data_path = Path("stats/static/js/data")
 
