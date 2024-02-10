@@ -1,5 +1,10 @@
 {% extends "chart_page.html" %}
+{% import "macros.html" as macros %}
 
 {% block chart_script %}
 <script type="module" src="{{ config.base_url }}/js/charts/artists.js"></script>
 {% endblock chart_script %}
+
+{% block table %}
+{{ macros::tag_count_table(filename="artist_tags.json") }}
+{% endblock table %}

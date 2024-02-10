@@ -1,5 +1,12 @@
 {% extends "chart_page.html" %}
+{% import "macros.html" as macros %}
 
 {% block chart_script %}
 <script type="module" src="{{ config.base_url }}/js/charts/characters.js"></script>
 {% endblock chart_script %}
+
+{% block table %}
+{{ macros::tag_count_table(filename="character_tags.json") }}
+{% endblock table %}
+
+<script src="{{ config.base_url }}/js/sortable.js" charset="utf-8"></script>

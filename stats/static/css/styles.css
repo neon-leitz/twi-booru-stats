@@ -1,6 +1,7 @@
 :root {
   --header-height: 4rem;
   --bg-1: #363E79;
+  --bg-2: #131a48;
   --text-1: #F7A71B;
   --text-2: #D25041;
   --main-x-padding: 0.5rem;
@@ -10,10 +11,12 @@
 html,
 body {
   background: #282E5A;
-  height: 100%;
 }
 
 nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   gap: 2rem;
   align-items: center;
@@ -36,7 +39,7 @@ nav a:hover {
   text-decoration: underline;
 }
 
-.heading, main {
+.scanline-text {
   font-family: "Sixtyfour", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -44,19 +47,31 @@ nav a:hover {
   font-variation-settings:
     "BLED" 0,
     "SCAN" -12;
-  text-align: center;
 }
 
-main {
+.heading, main {
+  font-family: "Courier New", mono;
+  text-align: center;
+  color: var(--text-1);
+}
+
+#chart {
   color: var(--text-1);
   display: flex;
   flex-direction: column;
   font-size: 1.75rem;
   gap: 1rem;
+  /* height: calc(100vh - var(--header-height) - 2 * var(--main-y-padding)); */
   height: calc(100vh - var(--header-height) - 2 * var(--main-y-padding));
   width: calc(100% - 2 * var(--main-x-padding));
-  overflow: auto;
+  overflow-y: auto;
+  /* overflow-x: hidden; */
   padding: var(--main-y-padding) var(--main-x-padding);
+}
+
+main {
+  font-size: 2rem;
+  overflow: auto;
 }
 
 main a:link {
@@ -104,6 +119,9 @@ main a:visited {
   gap: 3rem;
 }
 
+.table {
+  width: 100%;
+}
 
 @media screen and (max-width: 900px) {
   nav {

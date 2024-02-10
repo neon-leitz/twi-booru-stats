@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 
-{% block content %}
-<main id="chart"></main>
-{% block chart_script %}{% endblock chart_script %}
-{% endblock content %}
+{% block head_extra %}
+<link rel="stylesheet" href="{{ config.base_url }}/css/sortable.css">
+<script src="{{ config.base_url }}/js/sortable.js" charset="utf-8"></script>
+{% endblock head_extra %}
 
+{% block content %}
+<div id="chart"></div>
+{% block chart_script %}{% endblock chart_script %}
+{% block table %}{% endblock %}
+{% endblock content %}

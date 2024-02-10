@@ -1,0 +1,44 @@
+{% macro tag_count_table(filename, type="text") %}
+{% set data = load_data(path="js/data/" ~ filename) %}
+{% set columns = ["Tag", "Uses"] %}
+<table class="table sortable">
+  <thead>
+    <tr>
+      {% for col in columns %}
+      <th>{{ col }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for tag, uses in data["uses"] %}
+    <tr>
+      <td>{{ tag }}</td>
+      <td>{{ uses }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endmacro table %}
+
+
+{% macro uploader_table(filename, type="text") %}
+{% set data = load_data(path="js/data/" ~ filename) %}
+{% set columns = ["Uploader", "Uploads"] %}
+<table class="table sortable">
+  <thead>
+    <tr>
+      {% for col in columns %}
+      <th>{{ col }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for uploader, uploads in data %}
+    <tr>
+      <td>{{ uploader }}</td>
+      <td>{{ uploads }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endmacro table %}
