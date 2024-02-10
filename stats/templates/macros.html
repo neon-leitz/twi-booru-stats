@@ -12,7 +12,7 @@
   <tbody>
     {% for tag, uses in data["uses"] %}
     <tr>
-      <td>{{ tag }}</td>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/{{ tag }}/1">{{ tag }}</a></td>
       <td>{{ uses }}</td>
     </tr>
     {% endfor %}
@@ -35,7 +35,7 @@
   <tbody>
     {% for uploader, uploads in data %}
     <tr>
-      <td>{{ uploader }}</td>
+      <td><a href="https://fanworks.wanderinginn.com/user/{{ uploader }}">{{ uploader }}</a></td>
       <td>{{ uploads }}</td>
     </tr>
     {% endfor %}

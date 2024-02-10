@@ -195,9 +195,18 @@ if __name__ == "__main__":
 
     # Post uploader counts
     posts_df["uploader"] = posts_df["owner"].apply(lambda x: pd.Series(x["name"]))
-    posts_df.groupby("uploader")["uploader"].count().sort_values(
-        ascending=False
-    ).to_json(Path(data_path, "post_uploader_counts.json"), indent=2)
+    uploader_counts = posts_df.groupby("uploader")["uploader"].count()
+
+    # Manually reallocate uploads to lightningowl per Ayutac's request
+    uploader_counts["Ayutac"] -= 336
+    if uploader_counts.get("lightningowl", None):
+        uploader_counts["lightningowl"] += 336
+    else:
+        uploader_counts["lightningowl"] = 336
+
+    uploader_counts.sort_values(ascending=False).to_json(
+        Path(data_path, "post_uploader_counts.json"), indent=2
+    )
     print(f"> Post uploader counts data saved to {data_path}")
 
     # Tags

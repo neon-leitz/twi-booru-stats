@@ -123,6 +123,14 @@ main a:visited {
   width: 100%;
 }
 
+.table a {
+  text-decoration: none;
+}
+
+.table a:hover {
+  background: black;
+}
+
 @media screen and (max-width: 900px) {
   nav {
     display: flex;
