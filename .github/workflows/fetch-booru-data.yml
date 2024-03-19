@@ -1,7 +1,7 @@
 name: fetch-booru-data
 on:
   schedule:
-    - cron: '23 16 * * *'
+    - cron: '23 16 * * 1'
 jobs:
   fetch:
     runs-on: ubuntu-latest
