@@ -1,13 +1,14 @@
 {
   "uses":{
-    "spoiler:book1":705,
-    "spoiler:volume7":658,
-    "spoiler:volume9":521,
-    "spoiler:volume8":517,
-    "spoiler:volume6":458,
-    "spoiler:book2":382,
-    "spoiler:volume4":267,
-    "spoiler:volume3":241,
-    "spoiler:volume5":195
+    "spoiler:book1":717,
+    "spoiler:volume7":663,
+    "spoiler:volume9":536,
+    "spoiler:volume8":527,
+    "spoiler:volume6":461,
+    "spoiler:book2":403,
+    "spoiler:volume4":268,
+    "spoiler:volume3":247,
+    "spoiler:volume5":201,
+    "spoiler:volume10":2
   }
 }
