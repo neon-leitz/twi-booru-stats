@@ -214,21 +214,21 @@ if __name__ == "__main__":
 
     # Artist tags
     artist_tags = tags.query("tag.str.startswith('artist:')")
-    artist_tags.sort_values("uses", ascending=False).set_index("tag").to_json(
+    artist_tags.sort_values(["uses", "tag"], ascending=False).set_index("tag").to_json(
         Path(data_path, "artist_tags.json"), indent=2
     )
     print(f"> Artist tag data saved to {data_path}")
 
     # Character tags
     character_tags = tags.query("tag.str.startswith('character:')")
-    character_tags.sort_values("uses", ascending=False).set_index("tag").to_json(
-        Path(data_path, "character_tags.json"), indent=2
-    )
+    character_tags.sort_values(["uses", "tag"], ascending=False).set_index(
+        "tag"
+    ).to_json(Path(data_path, "character_tags.json"), indent=2)
     print(f"> Character tag data saved to {data_path}")
 
     # Book tags
     book_tags = tags.query("tag.str.startswith('spoiler:book')")
-    book_tags.sort_values("uses", ascending=False).set_index("tag").to_json(
+    book_tags.sort_values(["uses", "tag"], ascending=False).set_index("tag").to_json(
         Path(data_path, "book_tags.json"), indent=2
     )
     print(f"> Book tag data saved to {data_path}")
@@ -237,7 +237,7 @@ if __name__ == "__main__":
     volume_tags = tags.query(
         "tag.str.startswith('spoiler:volum') or tag == 'spoiler:book1' or tag == 'spoiler:book2'"
     )
-    volume_tags.sort_values("uses", ascending=False).set_index("tag").to_json(
+    volume_tags.sort_values(["uses", "tag"], ascending=False).set_index("tag").to_json(
         Path(data_path, "volume_tags.json"), indent=2
     )
     print(f"> Volume tag data saved to {data_path}")
