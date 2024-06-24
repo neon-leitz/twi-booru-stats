@@ -2,6 +2,7 @@
 {% import "macros.html" as macros %}
 
 {% block chart_script %}
+{{ macros::scroll_to_table() }}
 <script type="module" src="{{ config.base_url }}/js/charts/uploaders.js"></script>
 {% endblock chart_script %}
 

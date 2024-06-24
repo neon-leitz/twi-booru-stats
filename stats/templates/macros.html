@@ -42,3 +42,12 @@
   </tbody>
 </table>
 {% endmacro table %}
+
+{% macro scroll_to_table() %}
+<a id="table-link" style="position: absolute; left: 1rem; top: 5rem; cursor: pointer;">↓ Table ↓</a>
+<script>
+document.getElementById("table-link").addEventListener("click", () => {
+  document.querySelector("table").scrollIntoView();
+});
+</script>
+{% endmacro scroll_to_table %}
