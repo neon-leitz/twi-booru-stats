@@ -1,6 +1,8 @@
 import * as Config from "../default_config.js"
-import posts_by_day from "../data/posts_per_day.json" assert {type: "json"};
-import posts_by_day_cumulative from "../data/posts_per_day_cumulative.json" assert {type: "json"};
+
+let posts_by_day_cumulative = await fetch("/js/data/posts_per_day_cumulative.json").then(res => res.json())
+let posts_by_day = await fetch("/js/data/posts_per_day.json").then(res => res.json())
+
 let base_counts = {
   x: Object.keys(posts_by_day).slice(1),
   y: Object.values(posts_by_day).slice(1),
@@ -36,4 +38,3 @@ Plotly.newPlot("chart", data, layout, {
   displaylogo: false,
   responsive: true,
 });
-
