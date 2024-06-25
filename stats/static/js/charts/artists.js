@@ -1,6 +1,6 @@
 import * as Config from "../default_config.js"
 
-fetch("/js/data/artist_tags.json")
+fetch("../../js/data/artist_tags.json")
 .then(res => res.json())
 .then(artist_tags => {
   let data = {

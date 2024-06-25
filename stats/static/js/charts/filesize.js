@@ -1,6 +1,6 @@
 import * as Config from "../default_config.js"
 
-fetch("/js/data/post_filesizes.json")
+fetch("../../js/data/post_filesizes.json")
 .then(res => res.json())
 .then(filesizes => {
   let data = {

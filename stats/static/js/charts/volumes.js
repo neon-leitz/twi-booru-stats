@@ -1,6 +1,6 @@
 import * as Config from "../default_config.js"
 
-let volume_tags = await fetch("/js/data/volume_tags.json").then(res => res.json());
+let volume_tags = await fetch("../../js/data/volume_tags.json").then(res => res.json());
 
 let data = {
   y: Object.keys(volume_tags["uses"]).reverse(),

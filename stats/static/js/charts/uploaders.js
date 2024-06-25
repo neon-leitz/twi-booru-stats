@@ -1,7 +1,6 @@
 import * as Config from "../default_config.js"
-// import uploader_counts from "../data/post_uploader_counts.json" assert {type: "json"};
 
-fetch("/js/data/post_uploader_counts.json")
+fetch("../../js/data/post_uploader_counts.json")
 .then(res => res.json())
 .then(uploader_counts => {
   let counts = Object.entries(uploader_counts).sort((a, b) => b[1] - a[1])

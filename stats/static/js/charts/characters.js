@@ -1,6 +1,6 @@
 import * as Config from "../default_config.js"
 
-fetch("/js/data/character_tags.json")
+fetch("../../js/data/character_tags.json")
 .then(res => res.json())
 .then(character_tags => {
   let data = {
