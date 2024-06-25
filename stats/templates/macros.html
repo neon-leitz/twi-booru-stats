@@ -47,7 +47,8 @@
 <a id="table-link" style="position: absolute; left: 1rem; top: 5rem; cursor: pointer;">↓ Table ↓</a>
 <script>
 document.getElementById("table-link").addEventListener("click", () => {
-  document.querySelector("table").scrollIntoView();
+  let table = document.querySelector("table");
+  window.scrollTo({top: table.getBoundingClientRect().y - 90, left: 0, behavior:"smooth"})
 });
 </script>
 {% endmacro scroll_to_table %}
