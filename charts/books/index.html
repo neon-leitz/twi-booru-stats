@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/favicon.ico" sizes="any">
+    <link rel="icon" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/favicon.svg" type="image/svg+xml">
+
+    
+<link rel="stylesheet" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/css/sortable.css">
+<script src="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/js/sortable.js" charset="utf-8"></script>
+
+
+    <title>TWI Booru Stats</title>
+
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+
+    <!-- CSS links -->
+    <link rel="stylesheet" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/css/normalize.css">
+    <link rel="stylesheet" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/css/styles.css">
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour:SCAN@-12&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="favicon">
+      <a href="">
+        <img src="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/favicon.svg"></img>
+      </a>
+    </div>
+    <nav>
+      
+      
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;">
+        Home
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;uploads">
+        Uploads
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;uploaders">
+        Uploaders
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;characters">
+        Characters
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;artists">
+        Artists
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;books">
+        Books
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;volumes">
+        Volumes
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;filetypes">
+        Filetypes
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;filesizes">
+        File Size
+      </a>
+      
+      
+      
+    </nav>
+    <main>
+      
+<div id="chart"></div>
+
+
+<a id="table-link" style="position: absolute; left: 1rem; top: 5rem; cursor: pointer;">↓ Table ↓</a>
+<script>
+document.getElementById("table-link").addEventListener("click", () => {
+  let table = document.querySelector("table");
+  window.scrollTo({top: table.getBoundingClientRect().y - 90, left: 0, behavior:"smooth"})
+});
+</script>
+
+<script type="module" src="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/js/charts/books.js"></script>
+
+
+
+
+
+<table class="table sortable">
+  <thead>
+    <tr>
+      
+      <th>Tag</th>
+      
+      <th>Uses</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/spoiler:book1/1">spoiler:book1</a></td>
+      <td>850</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/spoiler:book2/1">spoiler:book2</a></td>
+      <td>478</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/spoiler:book5/1">spoiler:book5</a></td>
+      <td>253</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/spoiler:book10/1">spoiler:book10</a></td>
+      <td>201</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/spoiler:book3/1">spoiler:book3</a></td>
+      <td>189</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/spoiler:book12/1">spoiler:book12</a></td>
+      <td>123</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/spoiler:book8/1">spoiler:book8</a></td>
+      <td>114</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/spoiler:book4/1">spoiler:book4</a></td>
+      <td>94</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/spoiler:book14/1">spoiler:book14</a></td>
+      <td>76</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/spoiler:book11/1">spoiler:book11</a></td>
+      <td>67</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/spoiler:book6/1">spoiler:book6</a></td>
+      <td>64</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/spoiler:book9/1">spoiler:book9</a></td>
+      <td>58</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/spoiler:book7/1">spoiler:book7</a></td>
+      <td>54</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/post/list/spoiler:book13/1">spoiler:book13</a></td>
+      <td>37</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+    </main>
+  </body>
+</html>
