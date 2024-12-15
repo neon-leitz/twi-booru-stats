@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Allow: /
+Sitemap: https://neon-leitz.github.io/twi-booru-stats/sitemap.xml

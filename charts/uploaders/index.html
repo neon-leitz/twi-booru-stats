@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/favicon.ico" sizes="any">
+    <link rel="icon" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/favicon.svg" type="image/svg+xml">
+
+    
+<link rel="stylesheet" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/css/sortable.css">
+<script src="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/js/sortable.js" charset="utf-8"></script>
+
+
+    <title>TWI Booru Stats</title>
+
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+
+    <!-- CSS links -->
+    <link rel="stylesheet" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/css/normalize.css">
+    <link rel="stylesheet" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/css/styles.css">
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour:SCAN@-12&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="favicon">
+      <a href="">
+        <img src="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/favicon.svg"></img>
+      </a>
+    </div>
+    <nav>
+      
+      
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;">
+        Home
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;uploads">
+        Uploads
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;uploaders">
+        Uploaders
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;characters">
+        Characters
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;artists">
+        Artists
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;books">
+        Books
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;volumes">
+        Volumes
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;filetypes">
+        Filetypes
+      </a>
+      
+      <a class="navbar-item" href="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats&#x2F;charts&#x2F;filesizes">
+        File Size
+      </a>
+      
+      
+      
+    </nav>
+    <main>
+      
+<div id="chart"></div>
+
+
+<a id="table-link" style="position: absolute; left: 1rem; top: 5rem; cursor: pointer;">↓ Table ↓</a>
+<script>
+document.getElementById("table-link").addEventListener("click", () => {
+  let table = document.querySelector("table");
+  window.scrollTo({top: table.getBoundingClientRect().y - 90, left: 0, behavior:"smooth"})
+});
+</script>
+
+<script type="module" src="https:&#x2F;&#x2F;neon-leitz.github.io&#x2F;twi-booru-stats/js/charts/uploaders.js"></script>
+
+
+
+
+
+<table class="table sortable">
+  <thead>
+    <tr>
+      
+      <th>Uploader</th>
+      
+      <th>Uploads</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/Ayutac">Ayutac</a></td>
+      <td>3142</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/copperandice">copperandice</a></td>
+      <td>746</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/onionlittle">onionlittle</a></td>
+      <td>491</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/lightningowl">lightningowl</a></td>
+      <td>336</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/Wingedhatchling">Wingedhatchling</a></td>
+      <td>28</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/Linu">Linu</a></td>
+      <td>20</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/bookcase">bookcase</a></td>
+      <td>17</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/StargazingSelphid">StargazingSelphid</a></td>
+      <td>14</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/j0e">j0e</a></td>
+      <td>12</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/Misty">Misty</a></td>
+      <td>11</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/Gulliver">Gulliver</a></td>
+      <td>5</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/Satchel_the_SandWing">Satchel_the_SandWing</a></td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/KaruCatArt">KaruCatArt</a></td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/Torenity">Torenity</a></td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/brownie">brownie</a></td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/Kantrah">Kantrah</a></td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/akuna">akuna</a></td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/aliased">aliased</a></td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/Jawjee">Jawjee</a></td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/Ergem">Ergem</a></td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td><a href="https://fanworks.wanderinginn.com/user/AxelTerizaki">AxelTerizaki</a></td>
+      <td>1</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+    </main>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://neon-leitz.github.io/twi-booru-stats/</loc>
+    </url>
+    <url>
+        <loc>https://neon-leitz.github.io/twi-booru-stats/charts/</loc>
+    </url>
+    <url>
+        <loc>https://neon-leitz.github.io/twi-booru-stats/charts/artists/</loc>
+    </url>
+    <url>
+        <loc>https://neon-leitz.github.io/twi-booru-stats/charts/books/</loc>
+    </url>
+    <url>
+        <loc>https://neon-leitz.github.io/twi-booru-stats/charts/characters/</loc>
+    </url>
+    <url>
+        <loc>https://neon-leitz.github.io/twi-booru-stats/charts/filesizes/</loc>
+    </url>
+    <url>
+        <loc>https://neon-leitz.github.io/twi-booru-stats/charts/filetypes/</loc>
+    </url>
+    <url>
+        <loc>https://neon-leitz.github.io/twi-booru-stats/charts/uploaders/</loc>
+    </url>
+    <url>
+        <loc>https://neon-leitz.github.io/twi-booru-stats/charts/uploads/</loc>
+    </url>
+    <url>
+        <loc>https://neon-leitz.github.io/twi-booru-stats/charts/volumes/</loc>
+    </url>
+</urlset>
